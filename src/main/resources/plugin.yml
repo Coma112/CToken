@@ -1,0 +1,7 @@
+name: CToken
+version: 1.0
+main: net.coma.ctoken.CToken
+api-version: 1.20
+authors: [ Coma112 ]
+softdepend:
+  - PlaceholderAPI
