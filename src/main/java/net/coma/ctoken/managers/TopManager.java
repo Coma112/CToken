@@ -9,7 +9,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 public record TopManager(@NotNull String playerName, int balance) {
     @SuppressWarnings("deprecation")
     public static TextComponent getTopDatabase(int value) {
-        List<TopManager> topBalance = CToken.getDatabaseManager().getTop(value);
+        List<TopManager> topBalance = CToken.getInstance().getDatabaseManager().getTop(value);
         TextComponent message = new TextComponent(MessageProcessor.process("\n&aTop " + value + " Balances:&f\n\n"));
 
         for (int i = 0; i < topBalance.size(); i++) {

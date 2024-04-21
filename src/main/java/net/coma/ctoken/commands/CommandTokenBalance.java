@@ -27,13 +27,13 @@ public class CommandTokenBalance extends PluginCommand {
             target = Bukkit.getOfflinePlayer(args[0]);
 
         } else if (sender instanceof OfflinePlayer player) {
-            sender.sendMessage(MessageKeys.SELFBALANCE.replace("%balance%", String.valueOf(CToken.getDatabaseManager().getBalance(player))));
+            sender.sendMessage(MessageKeys.SELFBALANCE.replace("%balance%", String.valueOf(CToken.getInstance().getDatabaseManager().getBalance(player))));
             return true;
         }
 
         sender.sendMessage(MessageKeys.OTHER_BALANCE
                 .replace("%player%", Objects.requireNonNull(Objects.requireNonNull(target).getName()))
-                .replace("%balance%", String.valueOf(CToken.getDatabaseManager().getBalance(target))));
+                .replace("%balance%", String.valueOf(CToken.getInstance().getDatabaseManager().getBalance(target))));
         return true;
 
     }

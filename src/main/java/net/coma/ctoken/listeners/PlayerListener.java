@@ -9,11 +9,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class PlayerListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        CToken.getDatabaseManager().createPlayer(event.getPlayer());
+        CToken.getInstance().getDatabaseManager().createPlayer(event.getPlayer());
     }
 
     @EventHandler
     public void onBalanceChange(BalanceChangeEvent event) {
-        CToken.getDatabaseManager().handleBalanceChangeEvent(event);
+        CToken.getInstance().getDatabaseManager().handleBalanceChangeEvent(event);
     }
 }

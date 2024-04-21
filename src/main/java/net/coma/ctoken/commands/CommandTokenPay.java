@@ -51,7 +51,7 @@ public class CommandTokenPay extends PluginCommand {
             return true;
         }
 
-        if (!CToken.getDatabaseManager().exists(target)) {
+        if (!CToken.getInstance().getDatabaseManager().exists(target)) {
             sender.sendMessage(MessageKeys.OFFLINE_PLAYER);
             return true;
         }
@@ -61,15 +61,15 @@ public class CommandTokenPay extends PluginCommand {
             return true;
         }
 
-        int playerBalance = CToken.getDatabaseManager().getBalance(player);
+        int playerBalance = CToken.getInstance().getDatabaseManager().getBalance(player);
 
         if (playerBalance < value) {
             player.sendMessage(MessageKeys.NOT_ENOUGH_MONEY);
             return true;
         }
 
-        CToken.getDatabaseManager().takeFromBalance(player, value);
-        CToken.getDatabaseManager().addToBalance(target, value);
+        CToken.getInstance().getDatabaseManager().takeFromBalance(player, value);
+        CToken.getInstance().getDatabaseManager().addToBalance(target, value);
 
         player.sendMessage(MessageKeys.PAY_PLAYER
                 .replace("%name%", Objects.requireNonNull(target.getName()))

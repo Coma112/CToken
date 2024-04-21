@@ -36,28 +36,28 @@ public class Placeholders extends PlaceholderExpansion {
     public String onPlaceholderRequest(@NotNull Player player, @NotNull String params) {
         switch (params) {
             case "balance" -> {
-                return String.valueOf(CToken.getDatabaseManager().getBalance(player));
+                return String.valueOf(CToken.getInstance().getDatabaseManager().getBalance(player));
             }
 
             case "formatted_balance" -> {
-                return CToken.getDatabaseManager().getFormattedBalance(player);
+                return CToken.getInstance().getDatabaseManager().getFormattedBalance(player);
             }
 
 
             case "commas_formatted_balance" -> {
-                return CToken.getDatabaseManager().getFormattedCommasBalance(player);
+                return CToken.getInstance().getDatabaseManager().getFormattedCommasBalance(player);
             }
 
             case "dot_formatted_balance" -> {
-                return CToken.getDatabaseManager().getFormattedDotBalance(player);
+                return CToken.getInstance().getDatabaseManager().getFormattedDotBalance(player);
             }
 
             case "top_place" -> {
-                return CToken.getDatabaseManager().getTopPlace(player) + ".";
+                return CToken.getInstance().getDatabaseManager().getTopPlace(player) + ".";
             }
 
             case "badge" -> {
-                int playerXP = CToken.getDatabaseManager().getXP(player);
+                int playerXP = CToken.getInstance().getDatabaseManager().getXP(player);
                 BadgeType badge = BadgeType.convertXPToBadge(playerXP);
 
                 if (badge != null) return badge.getDisplayName();
@@ -69,8 +69,8 @@ public class Placeholders extends PlaceholderExpansion {
             try {
                 int pos = Integer.parseInt(params.split("_")[1]);
 
-                if (CToken.getDatabaseManager().getTopPlayer(pos) != null)
-                    return CToken.getDatabaseManager().getTopPlayer(pos);
+                if (CToken.getInstance().getDatabaseManager().getTopPlayer(pos) != null)
+                    return CToken.getInstance().getDatabaseManager().getTopPlayer(pos);
                 return "---";
             } catch (Exception exception) {
                 return "";
@@ -81,8 +81,8 @@ public class Placeholders extends PlaceholderExpansion {
             try {
                 int pos = Integer.parseInt(params.split("_")[1]);
 
-                if (CToken.getDatabaseManager().getTopBalance(pos) != 0)
-                    return String.valueOf(CToken.getDatabaseManager().getTopBalance(pos));
+                if (CToken.getInstance().getDatabaseManager().getTopBalance(pos) != 0)
+                    return String.valueOf(CToken.getInstance().getDatabaseManager().getTopBalance(pos));
                 return "---";
             } catch (Exception exception) {
                 return "";

@@ -28,7 +28,7 @@ public class CommandTokenSet extends PluginCommand {
 
         OfflinePlayer target = Bukkit.getOfflinePlayer(args[0]);
 
-        if (!CToken.getDatabaseManager().exists(target)) {
+        if (!CToken.getInstance().getDatabaseManager().exists(target)) {
             sender.sendMessage(MessageKeys.OFFLINE_PLAYER);
             return true;
         }
@@ -47,15 +47,15 @@ public class CommandTokenSet extends PluginCommand {
             return true;
         }
 
-        CToken.getDatabaseManager().setBalance(target, value);
+        CToken.getInstance().getDatabaseManager().setBalance(target, value);
         sender.sendMessage(MessageKeys.SET_BALANCE_PLAYER
                 .replace("%name%", Objects.requireNonNull(target.getName()))
-                .replace("%balance%", String.valueOf(CToken.getDatabaseManager().getBalance(target))));
+                .replace("%balance%", String.valueOf(CToken.getInstance().getDatabaseManager().getBalance(target))));
 
         Player onlinePlayer = target.getPlayer();
         if (onlinePlayer != null) {
             onlinePlayer.sendMessage(MessageKeys.SET_BALANCE_TARGET
-                    .replace("%balance%", String.valueOf(CToken.getDatabaseManager().getBalance(target))));
+                    .replace("%balance%", String.valueOf(CToken.getInstance().getDatabaseManager().getBalance(target))));
         }
         return true;
     }

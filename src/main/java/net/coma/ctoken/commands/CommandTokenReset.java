@@ -28,19 +28,19 @@ public class CommandTokenReset extends PluginCommand {
         OfflinePlayer target;
 
         if (args[0].equals("all") || args[0].equals("*")) {
-            CToken.getDatabaseManager().resetEveryone();
+            CToken.getInstance().getDatabaseManager().resetEveryone();
             sender.sendMessage(MessageKeys.EVERYONE_RESET);
             return true;
         } else {
             target = Bukkit.getOfflinePlayer(args[0]);
 
-            if (!CToken.getDatabaseManager().exists(target)) {
+            if (!CToken.getInstance().getDatabaseManager().exists(target)) {
                 sender.sendMessage(MessageKeys.OFFLINE_PLAYER);
                 return true;
             }
         }
 
-        CToken.getDatabaseManager().resetBalance(target);
+        CToken.getInstance().getDatabaseManager().resetBalance(target);
         sender.sendMessage(MessageKeys.RESET.replace("%name%", Objects.requireNonNull(target.getName())));
         return true;
     }

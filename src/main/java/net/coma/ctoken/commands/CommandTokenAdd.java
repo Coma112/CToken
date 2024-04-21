@@ -48,17 +48,17 @@ public class CommandTokenAdd extends PluginCommand {
         }
 
         if (args[0].equals("all") || args[0].equals("*")) {
-            CToken.getDatabaseManager().addToEveryoneBalance(value);
+            CToken.getInstance().getDatabaseManager().addToEveryoneBalance(value);
             sender.sendMessage(MessageKeys.ADD_EVERYONE.replace("%value%", String.valueOf(value)));
             return true;
         }
 
-        if (!CToken.getDatabaseManager().exists(target)) {
+        if (!CToken.getInstance().getDatabaseManager().exists(target)) {
             sender.sendMessage(MessageKeys.OFFLINE_PLAYER);
             return true;
         }
 
-        CToken.getDatabaseManager().addToBalance(target, value);
+        CToken.getInstance().getDatabaseManager().addToBalance(target, value);
 
         sender.sendMessage(MessageKeys.ADD_PLAYER
                 .replace("%value%", String.valueOf(value))

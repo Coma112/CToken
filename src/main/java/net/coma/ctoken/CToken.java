@@ -17,7 +17,6 @@ public final class CToken extends JavaPlugin {
 
     @Getter
     private static CToken instance;
-    @Getter
     private static DatabaseManager databaseManager;
     private static Language language;
     private static CoinYML coinYML;
@@ -27,8 +26,8 @@ public final class CToken extends JavaPlugin {
         instance = this;
 
         initializeComponents();
-        registerEventsAndCommands();
         initializeDatabaseManager();
+        registerEventsAndCommands();
 
         MySQL mysql = (MySQL) databaseManager;
         mysql.createTable();
@@ -47,9 +46,11 @@ public final class CToken extends JavaPlugin {
         return coinYML;
     }
 
+    public DatabaseManager getDatabaseManager() { return databaseManager; }
+
     private void initializeComponents() {
-        language = new Language();
         coinYML = new CoinYML();
+        language = new Language();
     }
 
     private void registerEventsAndCommands() {
