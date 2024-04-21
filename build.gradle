@@ -29,12 +29,11 @@ repositories {
 publishing {
     publications {
         release(MavenPublication) {
+            from components.java
             groupId = 'net.coma'
             artifactId = 'ctoken'
             version = '1.0'
             artifact("$buildDir/build/libs/CToken-1.0-all.jar")
-
-            from components.java
         }
     }
 }
