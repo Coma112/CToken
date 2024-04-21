@@ -26,6 +26,19 @@ repositories {
     }
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.java
+                groupId = 'net.coma'
+                artifactId = 'CToken'
+                version = '1.0'
+            }
+        }
+    }
+}
+
 dependencies {
     compileOnly "io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT"
     compileOnly 'me.clip:placeholderapi:2.11.3'
